@@ -1,0 +1,11 @@
+.container {
+  background-color: aqua;
+}
+
+.item {
+  border: 2px solid black;
+  display: inline-block;
+  box-sizing: inherit;
+  box-shadow: 5px;
+  padding-bottom: 15px;
+}
