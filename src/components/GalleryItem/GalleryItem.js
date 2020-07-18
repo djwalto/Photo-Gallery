@@ -14,23 +14,6 @@ class GalleryItem extends Component {
     });
   };
 
-  getGalleryData() {
-    axios({
-      method: 'GET',
-      url: '/gallery',
-    })
-      .then((response) => {
-        // update state
-        console.log('response', response.data);
-        this.setState({
-          imageList: response.data,
-        });
-      })
-      .catch((err) => {
-        alert('There was a problem.');
-      });
-  }
-
   handleLike = (id) => (event) => {
     console.log('hi handle like', id);
     axios({
