@@ -2,10 +2,16 @@
   background-color: aqua;
 }
 
+img {
+  max-width: 200px;
+}
+
 .item {
   border: 2px solid black;
   display: inline-block;
   box-sizing: inherit;
   box-shadow: 5px;
   padding-bottom: 15px;
+  max-width: 150px;
+  max-height: 250px;
 }
