@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+let clickCounter = 0;
+
 class GalleryItem extends Component {
   state = {
     click: false,
@@ -28,6 +30,11 @@ class GalleryItem extends Component {
   //     }
   //   };
 
+  showLikes() {
+    clickCounter += 1;
+    console.log(clickCounter);
+  }
+
   handleClick(e) {
     e.preventDefault();
     this.setState({
@@ -42,7 +49,7 @@ class GalleryItem extends Component {
           <img key={image.id} src={image.path} alt={image.description} />
           <br></br>
           <button onClick={this.showLikes}>LIKE IT!</button>
-          <p></p>
+          <p>{clickCounter}</p>
         </div>
       ));
     } else {
