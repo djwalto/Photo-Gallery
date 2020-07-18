@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList';
-import GalleryItem from '../GalleryItem/GalleryItem';
+import Toolbar from '@material-ui/core/Toolbar';
+import TypoGraphy from '@material-ui/core/Typography';
+
+import AppBar from '@material-ui/core/AppBar';
 
 class App extends Component {
   state = {
@@ -34,11 +37,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Gallery of my life</h1>
-        </header>
+        <AppBar color="primary" position="static">
+          <Toolbar>
+            <TypoGraphy variant="title" color="inherit">
+              <h1>My Life</h1>
+            </TypoGraphy>
+          </Toolbar>
+        </AppBar>
         <br />
-        <GalleryList imageList={this.state.imageList} />
+        <GalleryList
+          getGalleryData={this.getGalleryData}
+          imageList={this.state.imageList}
+        />
       </div>
     );
   }

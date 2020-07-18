@@ -1,91 +1,56 @@
 import React, { Component } from 'react';
-
-let clickCounter = 0;
+import axios from 'axios';
+import App from '../App/App';
+import './GalleryItem.css';
 
 class GalleryItem extends Component {
   state = {
-    click: false,
-    likes: [],
+    toggle: false,
   };
 
-  //   displayText = () => {
-  //     if (!this.state.click) {
-  //       this.setState(
-  //         {
-  //           click: true,
-  //         },
-  //         () => {
-  //           console.log(this.state.click);
-  //         }
-  //       );
-  //     } else {
-  //       this.setState(
-  //         {
-  //           click: false,
-  //         },
-  //         () => {
-  //           console.log(this.state.click);
-  //         }
-  //       );
-  //     }
-  //   };
-
-  showLikes() {
-    clickCounter += 1;
-    console.log(clickCounter);
-  }
-
-  handleClick(e) {
-    e.preventDefault();
+  onToggleClick = () => {
     this.setState({
-      on: !this.state.on,
+      toggle: !this.state.toggle,
     });
-  }
+  };
+
+  handleLike = (id) => (event) => {
+    console.log('hi handle like', id);
+    axios({
+      method: 'PUT',
+      url: `/gallery/like/${id}`,
+    })
+      .then((response) => {
+        console.log('HANDLE LIKE RESPONSE', response);
+        console.log(this.props.item.likes);
+        this.setState({
+          ...this.props.item,
+          likes: (this.props.item.likes += 1),
+        });
+      })
+      .catch((err) => {
+        console.log('err: ', err);
+        alert('Stuff broke!!!');
+      });
+  };
+
   render() {
-    let status;
-    if (this.state.on) {
-      status = this.props.imageList.map((image) => (
-        <div key={image.id}>
-          <img key={image.id} src={image.path} alt={image.description} />
-          <br></br>
-          <button onClick={this.showLikes}>LIKE IT!</button>
-          <p>{clickCounter}</p>
-        </div>
-      ));
-    } else {
-      status = this.props.imageList.map((image) => (
-        <div key={image.id}>
-          <p key={image.id}>{image.description}</p>
-        </div>
-      ));
+    let elementRender = <img src={this.props.item.path} />;
+    if (this.state.toggle === true) {
+      elementRender = <p>{this.props.item.description}</p>;
     }
+
     return (
-      <div>
-        <button onClick={this.handleClick.bind(this)}>Toggle</button>
-        {status}
+      <div className="container">
+        <p className="item" onClick={this.onToggleClick}>
+          {elementRender}
+        </p>
+        <button onClick={this.handleLike(this.props.item.id)}>
+          Like: {this.props.item.likes}
+        </button>
       </div>
     );
   }
 }
-
-//   render() {
-//     let el = this.props.imageList.map((image) => (
-//       <div key={image.id}>
-//         <img key={image.id} src={image.path} alt={image.description} />
-//         <br></br>
-//         <button onClick={this.showLikes}>LIKE IT!</button>
-//         <p></p>
-//       </div>
-//     ));
-//     if (this.state.click === true) {
-//       el = this.props.imageList.map((image) => (
-//         <div key={image.id}>
-//           <p key={image.id}>{image.description}</p>
-//         </div>
-//       ));
-//     }
-//     return <div onClick={this.displayText}>HERE IS{el}</div>;
-//   }
-// }
 
 export default GalleryItem;
