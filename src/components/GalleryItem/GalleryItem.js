@@ -1,17 +1,49 @@
 import React, { Component } from 'react';
 
 class GalleryItem extends Component {
+  state = {
+    click: false,
+    likes: [],
+  };
+
+  displayText = () => {
+    if (!this.state.click) {
+      this.setState(
+        {
+          click: true,
+        },
+        () => {
+          console.log(this.state.click);
+        }
+      );
+    } else {
+      this.setState(
+        {
+          click: false,
+        },
+        () => {
+          console.log(this.state.click);
+        }
+      );
+    }
+  };
   render() {
-    return (
-      <div>
-        {this.props.imageList.map((image) => (
-          <div key={image.id}>
-            {image.description}
-            <img src={image.path} />
-          </div>
-        ))}
+    let el = this.props.imageList.map((image) => (
+      <div key={image.id}>
+        <img key={image.id} src={image.path} alt={image.description} />
+        <br></br>
+        <button onClick={this.showLikes}>LIKE IT!</button>
+        <p></p>
       </div>
-    );
+    ));
+    if (this.state.click === true) {
+      el = this.props.imageList.map((image) => (
+        <div key={image.id}>
+          <p key={image.id}>{image.description}</p>
+        </div>
+      ));
+    }
+    return <div onClick={this.displayText}>HERE IS{el}</div>;
   }
 }
 
