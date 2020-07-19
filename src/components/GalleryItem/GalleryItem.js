@@ -47,6 +47,7 @@ class GalleryItem extends Component {
           ...this.props.item,
           likes: Number((this.props.item.likes += 1)),
         });
+        this.getGalleryData();
       })
       .catch((err) => {
         console.log('err: ', err);
