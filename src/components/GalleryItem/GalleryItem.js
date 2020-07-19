@@ -14,18 +14,38 @@ class GalleryItem extends Component {
     });
   };
 
+  getGalleryData() {
+    axios({
+      method: 'GET',
+      url: '/gallery',
+    })
+      .then((response) => {
+        // update state
+        console.log('response', response.data);
+        this.setState({
+          imageList: response.data,
+        });
+      })
+      .catch((err) => {
+        alert('There was a problem.');
+      });
+  }
+
   handleLike = (id) => (event) => {
     console.log('hi handle like', id);
     axios({
       method: 'PUT',
       url: `/gallery/like/${id}`,
+      data: {
+        likes: this.props.item.likes,
+      },
     })
       .then((response) => {
         console.log('HANDLE LIKE RESPONSE', response);
-        console.log(this.props.item.likes);
+        console.log(this.props.item.description);
         this.setState({
           ...this.props.item,
-          likes: (this.props.item.likes += 1),
+          likes: Number((this.props.item.likes += 1)),
         });
       })
       .catch((err) => {
