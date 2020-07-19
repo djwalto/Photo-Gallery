@@ -27,7 +27,7 @@ router.put('/like/:id', (req, res) => {
   const galleryId = req.params.id;
   console.log(galleryId);
   const galleryData = req.body;
-  console.log(galleryData);
+  console.log('in galleryData put router', galleryData);
   const queryText = `UPDATE "galleryitems" SET "likes" = $1 WHERE "id" = $2;`;
 
   pool
