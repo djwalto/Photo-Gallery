@@ -9,35 +9,36 @@ CREATE TABLE "galleryitems"
 INSERT INTO "galleryitems"
     ("path", "description", "likes")
 VALUES
-    ('images/IMG_3395.png', 'Photo of my daughter and I on our bikes in 2017.', '7'
+    ('images/LUCKYSTRIKE.png', 'This is my son Brock trying out a bike at the local dealership', '0'
 );
 
 INSERT INTO "galleryitems"
     ("path", "description", "likes")
 VALUES
-    ('images/IMG_3396.png', 'Photo of my son graduating 6th grade in 2017.', '0'
+    ('images/IMG_3395.png', 'This is my daughter Arianna and I posing on our bikes in 2017', '0'
 );
 
 INSERT INTO "galleryitems"
     ("path", "description", "likes")
 VALUES
-    ('images/IMG_3397.png', 'Photo of my girlfriend and I.', '0'
+    ('images/IMG_3396.png', 'This is my son Brock graduating the 6th grade in 2017', '0'
 );
 
 INSERT INTO "galleryitems"
     ("path", "description", "likes")
 VALUES
-    ('images/IMG_3394.png', 'Photo of my daughter on my bike for the first time.', '0'
+    ('images/IMG_3397.png', 'This is my wonderful girlfriend Andrea and myself', '0'
 );
 
 INSERT INTO "galleryitems"
     ("path", "description", "likes")
 VALUES
-    ('images/IMG_3398.png', 'Photo of all the kids now.', '0'
+    ('images/IMG_3394.png', 'This is my daughter Arianna on my bike for the first time geared up and ready lol', '0'
 );
 
 INSERT INTO "galleryitems"
     ("path", "description", "likes")
 VALUES
-    ('images/LUCKYSTRIKE.png', 'Photo of my son on a bike at a dealership.', '0'
+    ('images/IMG_3398.png', 'This is my son Brock, my girlfriend Andreas daughter Leila, and my daughter Arianna a few weeks ago', '0'
 );
+

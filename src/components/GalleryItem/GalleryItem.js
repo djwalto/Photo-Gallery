@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import App from '../App/App';
 import './GalleryItem.css';
+import swal from 'sweetalert';
 
 class GalleryItem extends Component {
   state = {
@@ -33,6 +34,13 @@ class GalleryItem extends Component {
 
   handleLike = (id) => (event) => {
     console.log('hi handle like', id);
+    swal({
+      title: 'THANKS!',
+      text: 'You smashed my like button!',
+      icon: 'success',
+      button: 'Ahh Yeeeeaaah!',
+    });
+
     axios({
       method: 'PUT',
       url: `/gallery/like/${id}`,
@@ -53,6 +61,7 @@ class GalleryItem extends Component {
         console.log('err: ', err);
         alert('Stuff broke!!!');
       });
+    this.getGalleryData();
   };
 
   render() {
@@ -63,11 +72,17 @@ class GalleryItem extends Component {
 
     return (
       <div className="container">
+        <div className="likes">
+          <p>{this.props.item.likes} likes so far!</p>
+        </div>
         <p className="item" onClick={this.onToggleClick}>
           {elementRender}
         </p>
-        <button onClick={this.handleLike(this.props.item.id)}>
-          Like: {this.props.item.likes}
+        <button
+          className="button"
+          onClick={this.handleLike(this.props.item.id)}
+        >
+          Like Me!
         </button>
       </div>
     );

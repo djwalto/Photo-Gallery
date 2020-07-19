@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList';
-import Toolbar from '@material-ui/core/Toolbar';
-import TypoGraphy from '@material-ui/core/Typography';
-
 import AppBar from '@material-ui/core/AppBar';
 
 class App extends Component {
@@ -38,17 +35,15 @@ class App extends Component {
     return (
       <div className="App">
         <AppBar color="primary" position="static">
-          <Toolbar>
-            <TypoGraphy variant="title" color="inherit">
-              <h1>My Life</h1>
-            </TypoGraphy>
-          </Toolbar>
+          <h1>Smash the like button for your FAVORITE pic!</h1>
         </AppBar>
-        <br />
-        <GalleryList
-          getGalleryData={this.getGalleryData}
-          imageList={this.state.imageList}
-        />
+        <div className="list">
+          <GalleryList
+            getLikes={this.getLikes}
+            getGalleryData={this.getGalleryData}
+            imageList={this.state.imageList}
+          />
+        </div>
       </div>
     );
   }
